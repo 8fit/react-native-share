@@ -1,10 +1,10 @@
 #import <MessageUI/MessageUI.h>
 #import "RNShare.h"
-#import "RCTConvert.h"
-#import "RCTLog.h"
-#import "RCTUtils.h"
-#import "RCTBridge.h"
-#import "RCTUIManager.h"
+#import <React/RCTConvert.h>
+#import <React/RCTLog.h>
+#import <React/RCTUtils.h>
+#import <React/RCTBridge.h>
+#import <React/RCTUIManager.h>
 #import "GenericShare.h"
 #import "WhatsAppShare.h"
 #import "GooglePlusShare.h"
@@ -21,7 +21,7 @@ RCT_EXPORT_METHOD(shareSingle:(NSDictionary *)options
                   failureCallback:(RCTResponseErrorBlock)failureCallback
                   successCallback:(RCTResponseSenderBlock)successCallback)
 {
-    
+
     NSString *social = [RCTConvert NSString:options[@"social"]];
     if (social) {
         NSLog(social);
@@ -39,7 +39,7 @@ RCT_EXPORT_METHOD(shareSingle:(NSDictionary *)options
             [shareCtl shareSingle:options failureCallback: failureCallback successCallback: successCallback];
         } else if([social isEqualToString:@"whatsapp"]) {
             NSLog(@"TRY OPEN whatsapp");
-            
+
             WhatsAppShare *shareCtl = [[WhatsAppShare alloc] init];
             [shareCtl shareSingle:options failureCallback: failureCallback successCallback: successCallback];
         } else if([social isEqualToString:@"email"]) {
